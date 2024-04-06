@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "schedule"
+version = "0.1.0"
+description = ""
+authors = ["YoussefAswad <youssefaswad@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-generativeai = "^0.4.1"
+fastapi = "^0.110.1"
+pymongo = {extras = ["srv"], version = "^4.6.3"}
+bcrypt = "^4.1.2"
+python-jose = "^3.3.0"
+pydantic-settings = "^2.2.1"
+python-multipart = "^0.0.9"
+jwt = "^1.3.1"
+pydantic = {extras = ["email"], version = "^2.6.4"}
+pyarabic = "^0.6.15"
+
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = "^0.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+run = "schedule.main:main"
