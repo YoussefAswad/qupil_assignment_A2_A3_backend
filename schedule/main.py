@@ -284,15 +284,25 @@ def get_ayah():
     surah = ayah_data["surah"]
     ayah = ayah_data["text"]
     ayah_tashkeel = ayah_data_tashkeel["text"]
+
+    # if len(ayah.split(" ")) < 6:
+    #     return get_ayah()
+
     word_index = random.randint(2, len(ayah.split(" ")) - 3)
+
     word = ayah.split(" ")[word_index]
+    if len(word) < 4:
+        return get_ayah()
+
     before_word = " ".join(ayah.split(" ")[:word_index])
     after_word = " ".join(ayah.split(" ")[word_index + 1 :])
     surrounding_ayat = f"{get_ayah_clean(random_ayah_no - 1)['text']} {get_ayah_clean(random_ayah_no + 1)['text']}"  # type: ignore
     # get three random words from the surrounding ayat
+    print(surrounding_ayat.split(" "))
     surrounding_words = [
         w for w in surrounding_ayat.split(" ") if len(w) > 4 and w != word
     ]
+    print(surrounding_words)
     random_words = random.sample(surrounding_words, 2)
     choices = [word, *random_words]
     # shuffle the choices
